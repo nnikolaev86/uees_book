@@ -67,35 +67,35 @@ fprintf('Y21  = %0.4f %+0.4fi \n', real(Y21), imag(Y21))
 fprintf('\nb) Метод с редуциране матрицата на възловите проводимости, при пренебрегнати\n   напречни проводимости на електропроводите\n')
 
 % Формиране на матриците на проводимостите на отделните елементи
-Y_W1 = [ 1/ZW1, -1/ZW1;
+MW1 = [ 1/ZW1, -1/ZW1;
         -1/ZW1,  1/ZW1
        ];
 fprintf('Възлова матрица на W1')
-Y_W1
+MW1
 
-Y_W2 = [ 1/ZW2, -1/ZW2;
+MW2 = [ 1/ZW2, -1/ZW2;
         -1/ZW2,  1/ZW2
        ];
 fprintf('Възлова матрица на W2')
-Y_W2
+MW2
 
-Y_W3 = [ 1/ZW3, -1/ZW3;
+MW3 = [ 1/ZW3, -1/ZW3;
         -1/ZW3,  1/ZW3
        ];
 fprintf('Възлова матрица на W3')
-Y_W3
+MW3
 
-Y_W4 = [ 1/ZW4, -1/ZW4;
+MW4 = [ 1/ZW4, -1/ZW4;
         -1/ZW4,  1/ZW4
        ];
 fprintf('Възлова матрица на W4')
-Y_W4
+MW4
 
-Y_T = [ 1/ZT, -1/ZT;
+MT = [ 1/ZT, -1/ZT;
        -1/ZT,  1/ZT;
       ];
 fprintf('Възлова матрица на T')
-Y_W1
+MW1
 
 % Формиране на матрицата на проводимостите на мрежата
 % с размери 4х4, според броя възлите в нея
@@ -104,42 +104,42 @@ Y = zeros(4,4);
 % Включваме в нея T
 bus1 = 1;
 bus2 = 3;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_T(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_T(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_T(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_T(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MT(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MT(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MT(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MT(2,1);
 
 % Включваме в нея W1
 bus1 = 3;
 bus2 = 4;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W1(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W1(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W1(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W1(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW1(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW1(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW1(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW1(2,1);
 
 % Включваме в нея W2
 bus1 = 3;
 bus2 = 4;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W2(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W2(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W2(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W2(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW2(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW2(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW2(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW2(2,1);
 
 % Включваме в нея W3
 bus1 = 4;
 bus2 = 2;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W3(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W3(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W3(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W3(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW3(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW3(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW3(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW3(2,1);
 
 % Включваме в нея W4
 bus1 = 4;
 bus2 = 2;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W4(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W4(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W4(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W4(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW4(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW4(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW4(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW4(2,1);
 
 % Включваме в нея B
 bus1 = 3;
@@ -182,35 +182,35 @@ fprintf('Y21  = %0.4f %+0.4fi \n', real(Y21), imag(Y21))
 fprintf('\nc) Метод с редуциране матрицата на възловите проводимости, при отчитане\n   напречните проводимости на електропроводите\n')
 
 % Формиране на матриците на проводимостите на отделните елементи
-Y_W1 = [ (1/ZW1),        -(1/ZW1 + YW1/2);
+MW1 = [ (1/ZW1),        -(1/ZW1 + YW1/2);
     -(1/ZW1 + YW1/2), (1/ZW1)
     ];
 fprintf('Възлова матрица на W1')
-Y_W1
+MW1
 
-Y_W2 = [ (1/ZW2),        -(1/ZW2 + YW2/2);
+MW2 = [ (1/ZW2),        -(1/ZW2 + YW2/2);
     -(1/ZW2 + YW2/2), (1/ZW2)
     ];
 fprintf('Възлова матрица на W2')
-Y_W2
+MW2
 
-Y_W3 = [ (1/ZW3),        -(1/ZW3 + YW3/2);
+MW3 = [ (1/ZW3),        -(1/ZW3 + YW3/2);
     -(1/ZW3 + YW3/2), (1/ZW3)
     ];
 fprintf('Възлова матрица на W3')
-Y_W3
+MW3
 
-Y_W4 = [ (1/ZW4),        -(1/ZW4 + YW4/2);
+MW4 = [ (1/ZW4),        -(1/ZW4 + YW4/2);
     -(1/ZW4 + YW4/2), (1/ZW4)
     ];
 fprintf('Възлова матрица на W4')
-Y_W4
+MW4
 
-Y_T = [ 1/ZT, -1/ZT;
+MT = [ 1/ZT, -1/ZT;
        -1/ZT,  1/ZT;
     ];
 fprintf('Възлова матрица на T')
-Y_W1
+MT
 
 % Формиране на матрицата на проводимостите на мрежата
 % с размери 4х4, според броя възлите в нея
@@ -219,42 +219,42 @@ Y = zeros(4,4);
 % Включваме в нея T
 bus1 = 1;
 bus2 = 3;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_T(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_T(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_T(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_T(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MT(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MT(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MT(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MT(2,1);
 
 % Включваме в нея W1
 bus1 = 3;
 bus2 = 4;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W1(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W1(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W1(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W1(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW1(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW1(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW1(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW1(2,1);
 
 % Включваме в нея W2
 bus1 = 3;
 bus2 = 4;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W2(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W2(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W2(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W2(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW2(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW2(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW2(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW2(2,1);
 
 % Включваме в нея W3
 bus1 = 4;
 bus2 = 2;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W3(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W3(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W3(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W3(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW3(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW3(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW3(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW3(2,1);
 
 % Включваме в нея W4
 bus1 = 4;
 bus2 = 2;
-Y(bus1,bus1) = Y(bus1,bus1) + Y_W4(1,1);
-Y(bus2,bus2) = Y(bus2,bus2) + Y_W4(2,2);
-Y(bus1,bus2) = Y(bus1,bus2) + Y_W4(1,2);
-Y(bus2,bus1) = Y(bus2,bus1) + Y_W4(2,1);
+Y(bus1,bus1) = Y(bus1,bus1) + MW4(1,1);
+Y(bus2,bus2) = Y(bus2,bus2) + MW4(2,2);
+Y(bus1,bus2) = Y(bus1,bus2) + MW4(1,2);
+Y(bus2,bus1) = Y(bus2,bus1) + MW4(2,1);
 
 % Включваме в нея B
 bus1 = 3;
