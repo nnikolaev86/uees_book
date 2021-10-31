@@ -137,4 +137,44 @@ fprintf('Декремент на затихване xi = %0.4f \n', xi)
 w = imag( lambda(1) );
 fprintf('Честота на колебанията w = %0.4f rad/s = %0.4f Hz\n', w, w/(2*pi) )
 
+%% Локус на корените
+% Тук нареждаме корените за всички работни режими от A до Е
+% тези с положителна имагинерна част
+lambdas_pos = [ -0.0833 + 8.3952i;
+                -0.0667 + 8.6053i;
+                -0.0500 + 8.7610i;
+                -0.0333 + 8.8675i;
+                -0.0167 + 8.9276i;
+                                ];
+% и онези с отрицателната имагинерна част
+lambdas_neg = [ -0.0833 - 8.3952i;
+                -0.0667 - 8.6053i;
+                -0.0500 - 8.7610i;
+                -0.0333 - 8.8675i;
+                -0.0167 - 8.9276i;
+                                ];
+                            
+cases = {'A','B','C','D','E'};
+                            
+% Графика на корените                            
+plot(real(lambdas_pos), imag(lambdas_pos), 'k--', 'LineWidth', 0.2, 'Marker', 'x', 'MarkerSize', 7)
+grid on; hold on
+plot(real(lambdas_neg), imag(lambdas_neg), 'k--', 'LineWidth', 0.2, 'Marker', 'x', 'MarkerSize', 7)
+xmin = -0.1;
+xmax = 0.01;
+ymin = -10;
+ymax =  10;
+ylim([ymin, ymax])
+xlim([xmin, xmax])
+xlabel 'Real   \alpha [Np/s]'
+ylabel 'Imag   \omega [rad/s]'
+plot([xmin, xmax], [0 0 ], 'k-', 'LineWidth', 0.1)
+plot([0 0 ], [ymin, ymax], 'k-', 'LineWidth', 0.1)
 
+for c=1:length(cases)
+   text( real(lambdas_pos(c)) , imag(lambdas_pos(c)), cases(c),...
+         'VerticalAlignment', 'top', 'HorizontalAlignment', 'center') 
+     
+     text( real(lambdas_neg(c)) , imag(lambdas_neg(c)), cases(c),...
+         'VerticalAlignment', 'bottom', 'HorizontalAlignment', 'center')     
+end
