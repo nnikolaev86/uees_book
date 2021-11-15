@@ -5,10 +5,10 @@ fprintf('ПРИМЕР 2: Изчисляване на ъглови характеристики и установен режим на едн
 %% Входни данни
 
 %Собствени проводимости:
-Y11  = 0.1882 -2.6990i ;
-Y22  = 0.1802 -2.8672i ;
+Y11  = 0.1978 -2.5993i ;
+Y22  = 0.1688 -2.4178i ;
 %Взаимни проводимости:
-Y12  = 0.1407 -2.5663i ;
+Y12  = 0.1362 -2.7317i ;
 Y21  = Y12;
 
 % За генераторния възел
@@ -181,7 +181,7 @@ hold on; box on; grid on;
 plot([theta_10, theta_10]*toDeg,[0, P1],'k--o', 'LineWidth', 1.5, 'MarkerSize', 3 )
 plot([0,        theta_10]*toDeg,[P1,P1],'k--o', 'LineWidth', 1.5, 'MarkerSize', 3 )
 text(theta_10*toDeg+5, 0, '\theta_{0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
-text(-3, P1, 'P_{G0}','FontSize',fsize, 'HorizontalAlignment', 'right', 'VerticalAlignment', 'middle')
+text(-3, P1, 'P_{G0}','FontSize',fsize, 'HorizontalAlignment', 'right', 'VerticalAlignment', 'top')
 xlabel '\theta_1 [deg]'
 ylabel 'P_1 [pu]'
 xlim([0 180])
@@ -191,11 +191,12 @@ plot(theta_1*toDeg, Q1_theta, 'k-', 'LineWidth', 1.5)
 hold on; box on; grid on;
 plot([theta_10, theta_10]*toDeg,[0, Q1],'k--o', 'LineWidth', 1.5, 'MarkerSize', 3 )
 plot([0,        theta_10]*toDeg,[Q1,Q1],'k--o', 'LineWidth', 1.5, 'MarkerSize', 3 )
-text(theta_10*toDeg+5, 0, '\theta_{0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
-text(-3, Q1, 'Q_{G0}','FontSize',fsize, 'HorizontalAlignment', 'right', 'VerticalAlignment', 'middle')
+text(theta_10*toDeg+5, 0, '\theta_{0}','FontSize',fsize, 'HorizontalAlignment', 'center', 'VerticalAlignment', 'top')
+text(-3, Q1, 'Q_{G0}','FontSize',fsize, 'HorizontalAlignment', 'right', 'VerticalAlignment', 'bottom')
 xlabel '\theta_1 [deg]'
 ylabel 'Q_1 [pu]'
 xlim([0 180])
+ylim([0 6])
 
 %% d) Векторна диаграма на генератора
 fprintf('\nc) Установен режим на генератора\n')
@@ -227,7 +228,7 @@ quiver(0,0, real(Ug0), imag(Ug0), 0, 'k-', 'LineWidth', 1.5)
 text(real(Ug0)+of, imag(Ug0), 'U_{G0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'middle')
 
 quiver(0,0, real(Ig0), imag(Ig0), 0, 'k-', 'LineWidth', 1.5)
-text(real(Ig0)+of, imag(Ig0), 'I_{G0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'bottom')
+text(real(Ig0)+of, imag(Ig0), 'I_{G0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
 
 % Плотиране на E' и E"
 quiver(0,0, ER0_prim, EI0_prim, 0, 'k-', 'LineWidth', 1.5)
@@ -241,7 +242,7 @@ quiver(0,0, EQ0*cos(delta0), EQ0*sin(delta0), 0, 'k-', 'LineWidth', 1.5)
 text(EQ0*cos(delta0)+of, EQ0*sin(delta0), 'E_{Q0}','FontSize',fsize, 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top')
 
 xlim([-0.5, 3])
-ylim([-1.5, 3])
+ylim([-1.0, 3])
 
 % Плотиране на ъгъл delta0
 delta = linspace(0, delta0, 30);
