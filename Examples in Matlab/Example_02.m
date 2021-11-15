@@ -55,7 +55,7 @@ fprintf('alpha_12 = %0.4f deg\n', alpha_12 * toDeg)
 fprintf('alpha_21 = %0.4f deg\n\n', alpha_21 * toDeg)
 
 % Диапазон на изменение на ъгъл theta_1
-theta_1 = linspace(0, pi, 100); % генериране на 100 точки между 0 и pi/2 RAD (0 до 90 DEG)
+theta_1 = linspace(0, pi, 100); % генериране на 100 точки между 0 и pi RAD (0 до 180 DEG)
 
 % Ъглови х-ки на генератора
 P1_theta = (U1^2)*abs(Y11)*sin(alpha_11) + U1*U2*abs(Y12)*sin(theta_1 - alpha_12);
